@@ -4,7 +4,7 @@ workspace:
 
 pipeline:
   build:
-    image: honestbee/goglidebuilder:1.8-0.12
+    image: quay.io/honestbee/goglidebuilder:1.8-0.12
     environment:
       - CGO_ENABLED=0
       - GOPATH=/go
@@ -20,5 +20,11 @@ pipeline:
     repo: quay.io/honestbee/docker-registry
     tags: [ "latest", ${DRONE_COMMIT_BRANCH}, ${DRONE_TAG} ]
     when:
-      branch: master
+      branch: [ master ]
 
+  notify:
+    image: plugins/slack
+    webhook: ${SLACK_WEBHOOK}
+    channel: feed-devops
+    when:
+      status: [ success, failure ]
