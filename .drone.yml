@@ -20,8 +20,7 @@ pipeline:
     repo: quay.io/honestbee/registry-monitor
     tags: 
       - "latest"
-      - ${DRONE_COMMIT_BRANCH}
-      - ${DRONE_TAG##*/} 
+      - ${DRONE_TAG} 
     when:
       event: tag
 
