@@ -1,0 +1,24 @@
+workspace:
+  base: /go
+  path: src/github.com/coreos/registry-monitor
+
+pipeline:
+  build:
+    image: honestbee/goglidebuilder:1.8-0.12
+    environment:
+      - CGO_ENABLED=0
+      - GOPATH=/go
+    commands:
+      # vendor
+      - glide install --skip-test
+      # dist
+      - mkdir bin
+      - go build -a -tags netgo -ldflags '-w' -o bin/monitor monitor.go
+
+  publish:
+    image: plugins/docker
+    repo: quay.io/honestbee/docker-registry
+    tags: [ "latest", ${DRONE_COMMIT_BRANCH}, ${DRONE_TAG} ]
+    when:
+      branch: master
+
