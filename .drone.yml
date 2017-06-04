@@ -18,7 +18,10 @@ pipeline:
   publish:
     image: plugins/docker
     repo: quay.io/honestbee/docker-registry
-    tags: [ "latest", ${DRONE_COMMIT_BRANCH}, ${DRONE_TAG} ]
+    tags: 
+      - "latest"
+      - ${DRONE_COMMIT_BRANCH}
+      - ${DRONE_TAG} 
     when:
       branch: [ master ]
 
