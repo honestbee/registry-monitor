@@ -1,7 +1,17 @@
 registry-monitor
 ============
 
+Forked from coreos/registry-monitor
+
 Simple go application that monitors a Docker registry by conducting pushes and pulls and reports the status to an HTTP endpoint.
+
+Minimal docker image:
+
+```sh
+docker pull quay.io/honestbee/registry-monitor
+```
+
+[tags](https://quay.io/repository/honestbee/registry-monitor?tab=tags)
 
 Running the monitor
 =============================
