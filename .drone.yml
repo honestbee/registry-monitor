@@ -17,7 +17,7 @@ pipeline:
 
   publish:
     image: plugins/docker
-    repo: quay.io/honestbee/docker-registry
+    repo: quay.io/honestbee/registry-monitor
     tags: 
       - "latest"
       - ${DRONE_COMMIT_BRANCH}
