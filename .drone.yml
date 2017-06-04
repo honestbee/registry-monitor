@@ -23,7 +23,7 @@ pipeline:
       - ${DRONE_COMMIT_BRANCH}
       - ${DRONE_TAG} 
     when:
-      branch: [ master ]
+      event: tag
 
   notify:
     image: plugins/slack
