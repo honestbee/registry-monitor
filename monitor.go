@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/coreos/pkg/flagutil"
+	_ "github.com/fsouza/go-dockerclient"
 	"github.com/prometheus/client_golang/prometheus"
 
 	log "github.com/Sirupsen/logrus"
