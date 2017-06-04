@@ -13,7 +13,6 @@ import (
 	"time"
 
 	"github.com/coreos/pkg/flagutil"
-	"github.com/fsouza/go-dockerclient"
 	"github.com/prometheus/client_golang/prometheus"
 
 	log "github.com/Sirupsen/logrus"
@@ -214,7 +213,9 @@ func clearAllImages(dockerClient *docker.Client) bool {
 		// Determine if we need to remove any images.
 		imagesFound := false
 		for _, image := range images {
+			log.Infof("  Found %s", image.ID)
 			if _, toSkip := skipImages[image.ID]; toSkip {
+				log.Infof("  flagged to skip.. %s", image.ID)
 				continue
 			}
 
